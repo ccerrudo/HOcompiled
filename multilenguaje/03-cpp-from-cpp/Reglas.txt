@@ -1,0 +1,18 @@
+Reglas:
+se compiló tanto con make all como son g++:
+
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/03-cpp-from-cpp$ g++ cpp-main.cpp cpp-sum.cpp
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/03-cpp-from-cpp$ ls
+a.out  cpp-main.cpp  cpp-sum.cpp  cpp-sum.h  Makefile
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/03-cpp-from-cpp$ ./a.out
+sum= 10000
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/03-cpp-from-cpp$ make all
+g++ -c cpp-main.cpp -o cpp-main_cpp.o
+g++ -c cpp-sum.cpp -o cpp-sum_cpp.o
+g++ cpp-main_cpp.o cpp-sum_cpp.o -o cpp-main.e
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/03-cpp-from-cpp$ ls
+a.out         cpp-main_cpp.o  cpp-sum.cpp    cpp-sum.h
+cpp-main.cpp  cpp-main.e      cpp-sum_cpp.o  Makefile
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/03-cpp-from-cpp$ ./cpp-main.e
+sum= 10000
+
