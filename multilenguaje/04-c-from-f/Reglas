@@ -1,0 +1,33 @@
+reglas
+Estos son los pasos que se siguieron para generar el ejecutable (se realizó e so maneras, utilizando el make file y usando directamente la consola y gfortran):
+Como se quería llamar una subrutina de C desde un programa en fortran se copiaron de las otras carpetas la subrutina c-sum.c y el archivo c-sum.h, también se copio el makefile pero me resultó muy complicado rescribir la parte de pasar a objeto el .c
+Entonces se decidió pasar a objeto el archivo c-sum.c (utilizando gfortran) y luego pasar el archivo f-main.f90 a objeto (tambien con gfortran) y finalmente compilar con gfortran el f-main.f90 y el c-sum.o
+
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f$ gfortran -c f-main.f90 -o f-main_f90.o
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f$ gfortran -c c-sum.c -o c-sum_f90.o
+
+Para poder compilar los dos juntos tuve que modificar el archivo de c-sum.c original agregando un _ al fianl del nombre de la subrutina (sum_abs_) ya que fortranagrega eso al nombre de forma automática (me daba un error al principio).
+
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f$ gfortran f-main_f90.o c-sum_f90.o -o f-main_f90.e
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f$ ls
+c-sum.c      c-sum.h  f-main.f90    f-main_f90.o  Makefile2
+c-sum_f90.o  c-sum.o  f-main_f90.e  Makefile1     Reglas
+
+Con esto lo compilo pero me da un error:
+
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f$ ./f-main_f90.e
+
+Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+Backtrace for this error:
+#0  0x7fe0e8506d4a
+#1  0x7fe0e8505f7d
+#2  0x7fe0e7a2502f
+#3  0x55b13f106a66
+#4  0x55b13f106976
+#5  0x55b13f106a2f
+#6  0x7fe0e7a122b0
+#7  0x55b13f106809
+#8  0xffffffffffffffff
+Segmentation fault
+

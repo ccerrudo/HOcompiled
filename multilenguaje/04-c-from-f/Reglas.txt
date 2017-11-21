@@ -1,0 +1,19 @@
+reglas
+Estos son los pasos que se siguieron para generar el ejecutable (usando directamente la consola y gfortran):
+Como se quería llamar una subrutina de C desde un programa en fortran se copiaron de las otras carpetas la subrutina c-sum.c y el archivo c-sum.h, también se copio el makefile pero me resultó muy complicado rescribir la parte de pasar a objeto el .c
+Entonces se decidió pasar a objeto el archivo c-sum.c (utilizando gcc) y luego complilar el archivo f-main.f90  y el objeto c-sum.o (gfortran) 
+
+Para poder compilar los dos juntos tuve que modificar el archivo de c-sum.c original agregando un _ al fianl del nombre de la subrutina (sum_abs_) ya que fortran agrega eso al nombre de forma automática (me daba un error al principio).
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f/New$ ls
+c-sum.c  c-sum.h  f-main.f90
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f/New$ gcc -c c-sum.c -o c-sum.o
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f/New$ ls
+c-sum.c  c-sum.h  c-sum.o  f-main.f90
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f/New$ gfortran f-main.f90 c-sum.o -o f-main_f90_c.e
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f/New$ ls
+c-sum.c  c-sum.h  c-sum.o  f-main.f90  f-main_f90_c.e
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/04-c-from-f/New$ ./f-main_f90_c.e
+ sum=   959881575
+
+Igualmente algún error debe haber porque no me da el miamos número que en los otros casos....
+
