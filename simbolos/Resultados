@@ -1,0 +1,12 @@
+Respuestas:
+Se compiló el archivo visibility.c utilizando el comando gcc visibility.c , así se generó un archivo con extension .out que es el ejecutable.
+También se ejecutó el make object y se generó el archivo visibility.o (que es el objeto binario previo al ejecutable). Ya que make object lo que hace es justamente frenar el proceso en la creaci{on del archivo objeto (hasta acá se transformó el codigo C en assembler y luego en código de máquina) 
+Al abrir este último archivo con el Gvim se observan muchos símbolos pero en su mayoría son los siguientes símbolos: ^, @ (es un código ilegible de símbolos).
+ 
+El archivo `visibility.c` tiene muchos tipos de símbolos. En
+este trabajo sólo tienen que compilar el objeto `visibility.o` 
+e identificar los símbolos, ejecutando:
+
+```
+make object
+```
