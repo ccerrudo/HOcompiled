@@ -1,0 +1,30 @@
+reglas
+Estos son los pasos que se siguieron para genrar el ejecutable (se realizó de dos maneras, utilizando el make file y usando directamente la consola y gcc):
+
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ gcc c-main.c c-sum.c
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ ls
+a.out  c-main.c  c-sum.c  c-sum.h  Makefile  Reglas
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ ./a.out
+sum=10000
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ gcc -c c-main.c -o c-main.o
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ gcc -c c-sum.c -o c-sum.o
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ gcc c-main.o c-sum.o -o c-main1.e
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ ls
+a.out      c-main.c  c-sum.c  c-sum.o   Reglas
+c-main1.e  c-main.o  c-sum.h  Makefile
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ ./c-main1.e
+sum=10000
+
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ make all
+gcc -c c-main.c -o c-main_c.o
+gcc -c c-sum.c -o c-sum_c.o
+gcc c-main_c.o c-sum_c.o -o c-main.e
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ ls
+a.out      c-main.c    c-main.e  c-sum.c    c-sum.h  Makefile
+c-main1.e  c-main_c.o  c-main.o  c-sum_c.o  c-sum.o  Reglas
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/02-c-from-c$ ./c-main.e
+sum=10000
+
+
+
+
