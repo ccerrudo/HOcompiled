@@ -1,0 +1,19 @@
+Reglas
+Estos son los pasos que se siguieron para generar el ejecutable:
+Como se quería llamar una subrutina de Fortran desde un programa en C se copiaron de las otras carpetas la subrutina f-sum.f90 y el archivo c-sum.h (ya que es invocado por el c-main.c) 
+En el archivo de .c cuando se llama a a la subrutina en fortran se debe agregar el _ (sum_abs_) 
+Entonces se decidió pasar a objeto el archivo f-sum.f90 (utilizando gfortran) y luego compilar el archivo c-main.c con el objeto f-sum_f90.o  (con gcc)
+A pesar de que lo compila luego de correrlo da un error...
+
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/05-f-from-c$ ls
+c-main.c  c-sum.h  f-sum.f90  Reglas
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/05-f-from-c$ gfortran -c f-sum.f90 -o f-sum_f90.o
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/05-f-from-c$ ls
+c-main.c  c-sum.h  f-sum.f90  f-sum_f90.o  Reglas
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/05-f-from-c$ gcc c-main.c f-sum_f90.o -o c-main_f90.e
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/05-f-from-c$ ls
+c-main.c  c-main_f90.e  c-sum.h  f-sum.f90  f-sum_f90.o  Reglas
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/05-f-from-c$ ./c-main_f90.e
+Segmentation fault
+
+
