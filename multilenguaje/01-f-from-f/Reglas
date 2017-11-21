@@ -1,0 +1,15 @@
+reglas
+Estos son los pasos que se siguieron para genrar el ejecutable (se realizó de so maneras, utilizando el make file y usando directamente la consola y gfortran):
+
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/01-f-from-f$ gfortran f-main.f90 f-sum.f90
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/01-f-from-f$ ls
+a.out  f-main.f90  f-sum.f90  Makefile
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/01-f-from-f$ ./a.out
+ sum=       10000
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/01-f-from-f$ make all
+gfortran -c f-main.f90 -o f-main_f90.o
+gfortran -c f-sum.f90 -o f-sum_f90.o
+gfortran f-main_f90.o f-sum_f90.o -o f-main.e
+ctpc17@debian:~/Desktop/Curso_ccerrudo/HOcompiled/multilenguaje/01-f-from-f$ ./f-main.e
+ sum=       10000
+
